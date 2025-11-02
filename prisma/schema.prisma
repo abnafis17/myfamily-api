@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model country {
+  ID            Int     @id @default(autoincrement())
+  Name          String? @db.VarChar(255)
+  Continent     String? @db.VarChar(255)
+  Sports        String? @db.VarChar(255)
+  Famous_Player String? @db.VarChar(255)
+  Champion      Int?
+}
+
+model family_members {
+  MEMBERID   Int     @id @default(autoincrement())
+  NAME       String? @db.VarChar(50)
+  AGE        Int?
+  DOB        String? @db.VarChar(50)
+  OCCUPATION String? @db.VarChar(50)
+}
+
+model players {
+  ID      Int     @id @default(autoincrement())
+  Name    String? @db.VarChar(100)
+  Country String? @db.VarChar(100)
+  Role    String? @db.VarChar(120)
+  Age     Int?
+  Club    String? @db.VarChar(120)
+}
